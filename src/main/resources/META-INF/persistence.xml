@@ -23,7 +23,7 @@
         <properties>
             <!-- Configuration JDBC  -->
             <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver" />
-            <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/ediagnostic_db" />
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/ediagnostic" />
             <property name="jakarta.persistence.jdbc.user" value="postgres" />
             <property name="jakarta.persistence.jdbc.password" value="postgres" />
 
@@ -35,6 +35,6 @@
             <!-- Génération automatique des tables -->
             <property name="hibernate.hbm2ddl.auto" value="update" />
         </properties>
-        
+
     </persistence-unit>
 </persistence>

@@ -1,8 +1,19 @@
 package com.ediagnostic.model;
 
-import com.ediagnostic.model.enums.Role;
-import jakarta.persistence.*;
 import java.io.Serializable;
+
+import com.ediagnostic.model.enums.Role;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "utilisateurs")
@@ -22,8 +33,9 @@ public abstract class Utilisateur implements Serializable {
     @Column(nullable = false, unique = true, length = 100)
     private String email;
 
-    @Column(nullable = false)
-    private String motDePasse; 
+    @Column(name = "mot_de_passe", nullable = false)
+
+    private String motDePasse;
 
     @Column(length = 20)
     private String telephone;
@@ -35,7 +47,8 @@ public abstract class Utilisateur implements Serializable {
     @Column(nullable = false)
     private boolean actif = true;
 
-    public Utilisateur() {}
+    public Utilisateur() {
+    }
 
     public Utilisateur(String nom, String prenom, String email, String motDePasse, String telephone, Role role) {
         this.nom = nom;
@@ -50,28 +63,67 @@ public abstract class Utilisateur implements Serializable {
         return this.prenom + " " + this.nom;
     }
 
+    public Long getId() {
+        return id;
+    }
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-    public String getNom() { return nom; }
-    public void setNom(String nom) { this.nom = nom; }
+    public String getNom() {
+        return nom;
+    }
 
-    public String getPrenom() { return prenom; }
-    public void setPrenom(String prenom) { this.prenom = prenom; }
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
 
-    public String getEmail() { return email; }
-    public void setEmail(String email) { this.email = email; }
+    public String getPrenom() {
+        return prenom;
+    }
 
-    public String getMotDePasse() { return motDePasse; }
-    public void setMotDePasse(String motDePasse) { this.motDePasse = motDePasse; }
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
 
-    public String getTelephone() { return telephone; }
-    public void setTelephone(String telephone) { this.telephone = telephone; }
+    public String getEmail() {
+        return email;
+    }
 
-    public Role getRole() { return role; }
-    public void setRole(Role role) { this.role = role; }
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-    public boolean isActif() { return actif; }
-    public void setActif(boolean actif) { this.actif = actif; }
+    public String getMotDePasse() {
+        return motDePasse;
+    }
+
+    public void setMotDePasse(String motDePasse) {
+        this.motDePasse = motDePasse;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public boolean isActif() {
+        return actif;
+    }
+
+    public void setActif(boolean actif) {
+        this.actif = actif;
+    }
 }

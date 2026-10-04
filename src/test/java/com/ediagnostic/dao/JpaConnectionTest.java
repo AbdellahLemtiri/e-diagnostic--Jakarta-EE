@@ -19,7 +19,7 @@ public class JpaConnectionTest {
     @BeforeAll
     public static void setUp() {
         em = HibernateUtil.getEntityManager();
-        assertNotNull(em, "L'EntityManager ma khassouch ykoun null");
+        assertNotNull(em, "n'est pas null ");
     }
 
     @Test
@@ -32,7 +32,7 @@ public class JpaConnectionTest {
         em.persist(acte);
         tx.commit();
 
-        assertNotNull(acte.getId(), "L'ID khasso yt-généra automatiquement");
+        assertNotNull(acte.getId(), "automatiquement");
 
         ActeTechnique found = em.find(ActeTechnique.class, acte.getId());
         assertNotNull(found);

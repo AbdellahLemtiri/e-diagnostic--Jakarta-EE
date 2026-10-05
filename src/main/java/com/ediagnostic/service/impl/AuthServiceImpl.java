@@ -35,7 +35,6 @@ public class AuthServiceImpl implements AuthService {
         if (PasswordUtil.checkPassword(motDePasse, user.getMotDePasse())) {
             return Optional.of(user);
         }
-
         return Optional.empty();
     }
 }

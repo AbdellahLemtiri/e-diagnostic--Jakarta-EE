@@ -45,7 +45,7 @@ public class AuthServlet extends HttpServlet {
             Utilisateur user = (Utilisateur) session.getAttribute("currentUser");
             redirigerSelonRole(user.getRole(), request, response);
             return;
-        }
+        } 
 
         request.getRequestDispatcher("/WEB-INF/views/auth/login.jsp").forward(request, response);
     }
@@ -90,5 +90,5 @@ public class AuthServlet extends HttpServlet {
                 resp.sendRedirect(context + "/login");
                 break;
         }
-    }
+    }   
 }

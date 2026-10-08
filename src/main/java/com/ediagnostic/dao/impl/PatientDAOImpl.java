@@ -85,7 +85,10 @@ public class PatientDAOImpl implements PatientDAO {
             LocalDateTime endOfDay = LocalDate.now().atTime(LocalTime.MAX);
 
             return entityManager.createQuery(
-                    "SELECT p FROM Patient p WHERE p.dateEnregistrement BETWEEN :start AND :end ORDER BY p.dateEnregistrement ASC",
+                    "SELECT DISTINCT p FROM Patient p " +
+                            "LEFT JOIN FETCH p.signesVitaux " +
+                            "WHERE p.dateEnregistrement BETWEEN :start AND :end " +
+                            "ORDER BY p.dateEnregistrement ASC",
                     Patient.class)
                     .setParameter("start", startOfDay)
                     .setParameter("end", endOfDay)
@@ -100,7 +103,10 @@ public class PatientDAOImpl implements PatientDAO {
         EntityManager entityManager = HibernateUtil.getEntityManager();
         try {
             return entityManager.createQuery(
-                    "SELECT p FROM Patient p WHERE p.enAttente = true ORDER BY p.dateEnregistrement ASC",
+                    "SELECT DISTINCT p FROM Patient p " +
+                            "LEFT JOIN FETCH p.signesVitaux " +
+                            "WHERE p.enAttente = true " +
+                            "ORDER BY p.dateEnregistrement ASC",
                     Patient.class)
                     .getResultList();
         } finally {
